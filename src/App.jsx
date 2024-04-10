@@ -28,7 +28,7 @@ function App() {
         <ul>
           {movies.map((movie) => (
             <li key={movie._id}>
-              <img src="" alt="" />
+              <img src={movie.img} alt="poster" />
               <iframe src={`https://www.youtube.com/embed/${movie.src}`} frameborder="0"></iframe>
               <h4>Title: {movie.title}</h4>
               <p>Description: {movie.description}</p>
