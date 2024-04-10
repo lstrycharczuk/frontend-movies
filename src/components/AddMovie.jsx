@@ -29,6 +29,8 @@ const AddMovie = ({ onAdd = () => { } }) => {
 
     return <div>
         <form onSubmit={handleSubmit(onSubmit)}>
+        <input {...register("src", { required: false })} />
+        <input {...register("img", { required: false })} />
             <input {...register("title", { required: true })} />
             <input {...register("description", { required: false })} />
             <input {...register("year", { required: false })} />
