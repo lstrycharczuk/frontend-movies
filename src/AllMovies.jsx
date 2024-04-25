@@ -45,15 +45,17 @@ function AllMovies() {
               {editMode && editMovieId === movie._id ? (
                 <>
                   {" "}
-                  <img src={movie.img} alt="poster" />
-                  <iframe
+                  <div className="movie-centre">
+                    <img src={movie.img} alt="poster" />
+                    <iframe
                       src={`https://www.youtube.com/embed/${movie.src}`}
                       frameborder="0"
                     ></iframe>
-                  <h4>Title: {movie.title}</h4>
-                  <p>Description: {movie.description}</p>
-                  <p>Year: {movie.year}</p>
-                  <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                    <h4>Title: {movie.title}</h4>
+                    <p>Description: {movie.description}</p>
+                    <p>Year: {movie.year}</p>
+                    <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                  </div>
                   <UpdateMovie
                     movieId={movie._id}
                     initialData={movie}
@@ -66,26 +68,37 @@ function AllMovies() {
                 </>
               ) : (
                 <>
-                  <Link to={`/movie/${movie._id}`} key={movie._id}>
-                    <img src={movie.img} alt="poster" />
-                   
-                    <h4>Title: {movie.title}</h4>
-                    <p>Description: {movie.description}</p>
-                    <p>Year: {movie.year}</p>
-                    <p>Watched: {movie.watched ? "✔" : "✖"}</p>
-                    {editMode && editMovieId === movie._id && (
-                      <button onClick={handleCancelEdit}>Cancel</button>
-                    )}{" "}
-                  </Link>
-                  {!editMode && (
-                    <button onClick={() => handleEditClick(movie._id)}>
-                      Edit
-                    </button>
-                  )}
-                  <DeleteMovie
-                    movieId={movie._id}
-                    onDelete={() => moviesRefetch()}
-                  />
+                  <div className="movie">
+                    <div>
+                      <Link to={`/movie/${movie._id}`} key={movie._id}>
+                        <img src={movie.img} alt="poster" />
+                      </Link>
+                    </div>
+                    <div>
+                      <div>
+                        <Link to={`/movie/${movie._id}`} key={movie._id}>
+                          <h4>Title: {movie.title}</h4>
+                          <p>Description: {movie.description}</p>
+                          <p>Year: {movie.year}</p>
+                          <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                          {editMode && editMovieId === movie._id && (
+                            <button onClick={handleCancelEdit}>Cancel</button>
+                          )}
+                        </Link>
+                      </div>
+                      <div className="button">
+                        {!editMode && (
+                          <button onClick={() => handleEditClick(movie._id)}>
+                            Edit
+                          </button>
+                        )}
+                        <DeleteMovie
+                          movieId={movie._id}
+                          onDelete={() => moviesRefetch()}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </>
               )}
             </li>

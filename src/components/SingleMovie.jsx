@@ -27,7 +27,7 @@ const SingleMovie = () => {
   const movie = responseData;
 
   console.log(movie);
-  console.log(responseData)
+  console.log(responseData);
 
   if (!movie) {
     return <h2>We didn't find the movie</h2>;
@@ -45,21 +45,27 @@ const SingleMovie = () => {
 
   return (
     <>
-    <Link to={`/`}>
-          <button>All</button>
-        </Link>
-    <div>
-      <h1>{movie.title}</h1>
-      {isLoading && <p>Loading...</p>}
-      <ul>
+      <Link to={`/`}>
+        <button>All</button>
+      </Link>
+      <div>
+        <h1>{movie.title}</h1>
+        {isLoading && <p>Loading...</p>}
+        <ul>
           <li key={movie._id}>
             {editMode && editMovieId === movie._id ? (
               <>
-                {" "}
-                <img src={movie.img} alt="poster" />
-                <p>Description: {movie.description}</p>
-                <p>Year: {movie.year}</p>
-                <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                <div className="movie-centre">
+                  {" "}
+                  <img src={movie.img} alt="poster" />
+                  <iframe
+                    src={`https://www.youtube.com/embed/${movie.src}`}
+                    frameborder="0"
+                  ></iframe>
+                  <p>Description: {movie.description}</p>
+                  <p>Year: {movie.year}</p>
+                  <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                </div>
                 <UpdateMovie
                   movieId={movie._id}
                   initialData={movie}
@@ -72,36 +78,43 @@ const SingleMovie = () => {
               </>
             ) : (
               <>
+                <div className="movie-content">
+                  <div className="nav-bar">
+                    <img src={movie.img} alt="poster" />
 
-                  <img src={movie.img} alt="poster" />
-                  <iframe
-                    src={`https://www.youtube.com/embed/${movie.src}`}
-                    frameborder="0"
-                  ></iframe>
-                  <h4>Title: {movie.title}</h4>
-                  <p>Description: {movie.description}</p>
-                  <p>Year: {movie.year}</p>
-                  <p>Watched: {movie.watched ? "✔" : "✖"}</p>
-                  {editMode && editMovieId === movie._id && (
-                    <button onClick={handleCancelEdit}>Cancel</button>
-                  )}
-                  {!editMode && (
-                    <button onClick={() => handleEditClick(movie._id)}>
-                      Edit
-                    </button>
-                  )}
-                  <DeleteMovie
-                    movieId={movie._id}
-                    onDelete={() => moviesRefetch()}
-                  />
-    
+                    <h4>Title: {movie.title}</h4>
+                    <p>Description: {movie.description}</p>
+                    <p>Year: {movie.year}</p>
+                    <p>Watched: {movie.watched ? "✔" : "✖"}</p>
+                    <div className="button">
+                      {editMode && editMovieId === movie._id && (
+                        <button onClick={handleCancelEdit}>Cancel</button>
+                      )}
+                      {!editMode && (
+                        <button onClick={() => handleEditClick(movie._id)}>
+                          Edit
+                        </button>
+                      )}
+                      <DeleteMovie
+                        movieId={movie._id}
+                        onDelete={() => moviesRefetch()}
+                      />
+                    </div>
+                  </div>
+                  <div className="movie-yt">
+                    {" "}
+                    <iframe
+                      src={`https://www.youtube.com/embed/${movie.src}`}
+                      frameborder="0"
+                    ></iframe>
+                  </div>
+                </div>
               </>
             )}
           </li>
-
-      </ul>
-    </div>
-  </>
+        </ul>
+      </div>
+    </>
   );
 };
 

@@ -40,3 +40,63 @@
 .read-the-docs {
   color: #888;
 }
+
+.movie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.button {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  list-style: none;
+}
+
+.movie-centre {
+  display: flex;
+  flex-direction: column;
+  max-width: 225px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-bar {
+  /* display:flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  background-color: #161616;
+  border-right: 1px solid #ddd;
+}
+
+.movie-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.movie-yt {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-yt iframe {
+  min-width: 1000px;
+  min-height: 500px;
+}

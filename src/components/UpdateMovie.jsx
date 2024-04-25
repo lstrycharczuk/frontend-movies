@@ -38,8 +38,7 @@ const UpdateMovie = ({ movieId, initialData, onUpdate = () => {}, onCancel = () 
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} >
         <input {...register("src", { required: false })} placeholder="src" defaultValue={initialData.src} />
         <input {...register("img", { required: false })} placeholder="img" defaultValue={initialData.img} />
         <input {...register("title", { required: true })} placeholder="title" defaultValue={initialData.title} />
@@ -50,7 +49,6 @@ const UpdateMovie = ({ movieId, initialData, onUpdate = () => {}, onCancel = () 
         <button type="submit">Update</button>
         <button type="button" onClick={handleCancel}>Cancel</button>
       </form>
-    </div>
   );
 };
 
