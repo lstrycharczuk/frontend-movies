@@ -8,5 +8,9 @@ export default defineConfig({
   plugins: [react()],
   define: {
     BASE_API_URL: JSON.stringify(baseApiURL)
-  }
+  },
+  build: {
+    rollupOptions: {
+      external: ['react-redux'],
+    },
 })
